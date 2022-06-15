@@ -44,7 +44,7 @@ export const Test = ({ data, setData }: any) => {
       {data&&(data.type==='image/jpeg'?
       <p>
         <h4>Es una foto</h4>
-        <Image src={'http://drive.google.com/uc?export=view&id='+data.fileId}></Image>
+        <Image src={'https://drive.google.com/uc?export=view&id='+data.fileId}></Image>
       </p>
       
       :
