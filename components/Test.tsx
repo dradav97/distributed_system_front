@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Image from 'next/image'
 
 export const Test = ({ data, setData }: any) => {
   const [inputData, setInputData] = useState("");
@@ -20,7 +21,7 @@ export const Test = ({ data, setData }: any) => {
     axios
       .get("/getFile/" + inputData)
       .then((res) => {
-        console.log("data", res.data);
+        console.log("data", res);
 
         setData(res.data);
       });
@@ -39,18 +40,20 @@ export const Test = ({ data, setData }: any) => {
       onClick={doRequest}
       >Consultar
       </button>
-      {data&&data.type==='image/jpeg'?
+      
+      {data&&(data.type==='image/jpeg'?
       <p>
         <h4>Es una foto</h4>
-        <img src={'http://drive.google.com/uc?export=view&id='+data.data}></img>
+        <Image src={'http://drive.google.com/uc?export=view&id='+data.fileId}></Image>
       </p>
       
       :
-      data&&
       <div>
         <h4>Info del archivo: </h4>
-        <p>{JSON.stringify(data.data)}</p>
-      </div> }
+        tipo de archivo: {JSON.stringify(data.type)}
+        {data.type==='text/plain'?<p>{JSON.stringify(data.data)}</p>:null}
+        <a href={`https://drive.google.com/uc?export=view&id=${data.fileId}&confirm=t`}>click para descargar</a>
+      </div> )}
 
     </div>
   );

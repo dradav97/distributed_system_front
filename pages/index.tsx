@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import {useState, useEffect} from 'react';
-import { Test } from './components/Test'
+import { Test } from '../components/Test';
 // import dotenv from 'dotenv'
 // dotenv.config()  // load .env file into process.env              
 
